@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://wsdl.app.solarpaygo" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://wsdl.app.solarpaygo" xmlns:intf="http://wsdl.app.solarpaygo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://wsdl.app.solarpaygo" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="uploadImage">
+    <complexType>
+     <sequence>
+      <element name="customerId" type="xsd:int"/>
+      <element name="imageId" type="xsd:int"/>
+      <element name="tableName" type="xsd:string"/>
+      <element name="imageType" type="xsd:int"/>
+      <element name="imageData" type="xsd:string"/>
+      <element name="imageLabel" type="xsd:string"/>
+      <element name="assetId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="uploadImageResponse">
+    <complexType>
+     <sequence>
+      <element name="uploadImageReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="uploadImageResponse">
+
+      <wsdl:part element="impl:uploadImageResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="uploadImageRequest">
+
+      <wsdl:part element="impl:uploadImage" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Attachments">
+
+      <wsdl:operation name="uploadImage">
+
+         <wsdl:input message="impl:uploadImageRequest" name="uploadImageRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:uploadImageResponse" name="uploadImageResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AttachmentsSoapBinding" type="impl:Attachments">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="uploadImage">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="uploadImageRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="uploadImageResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AttachmentsService">
+
+      <wsdl:port binding="impl:AttachmentsSoapBinding" name="Attachments">
+
+         <wsdlsoap:address location="http://solarpaygo2.mybluemix.net/services/Attachments"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
